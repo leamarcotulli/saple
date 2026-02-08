@@ -51,14 +51,17 @@ Step 5. -- Run xselect to create spectra
 #
 ############################
 
-8. Copy the latest XRT RMF file you need into the Swift/ folder as xrt.rmf
+Step 6. -- Get the latest RMF file
+     a. Copy the latest XRT RMF file you need into the Swift/ folder as xrt.rmf
+     
+Step 7. -- Run the powerlaw fit
+   a. Run: python xspec_pl_fit.py > xspec_run.log
+      Results: This code, for every xrtout_obsid does:
+               a. creates an arf
+               b. associates the bkg.pha, arf and rmf to the src.pha file
+               c. groups using optimal binning the source spectrum 
+               d. fits the spectrum with a tbabs*zpowerlaw the spectrum 
+               e. Does the same for WT files 
+               f. In the Swift/ folder you should have the params_xspec.csv file with the spectral fit results. 
+               
 
-9. Run: python xspec_pl_fit.py > xspec_run.log
-   This code, for every xrtout_obsid does:
-   a. creates an arf
-   b. associates the bkg.pha, arf and rmf to the src.pha file
-   c. groups using optimal binning the source spectrum 
-   d. fits the spectrum with a tbabs*zpowerlaw the spectrum 
-   e. Does the same for WT files 
-
-10. Now in the Swift/ folder you should have the params_xspec.txt with all the info needed
