@@ -47,10 +47,6 @@ For XRT follow the instructions at: **main_codes/xrt/XRT_pipeline_steps.md**
 
 For UVOT follow the instructions at: **main_codes/uvot/UVOT_pipeline_steps.md**
 
-
-## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
-If any issue arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de)
-
 ## If you use SAPLE, you better cite: 
 TBD (SAPLE) <br>
 UVOT/XRT/Swift papers I use in the analyis <br>
@@ -60,4 +56,6 @@ links to the nh stuff <br>
 Pablo's ; Tiffany's student; Vittoria (?)
 
 
+## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
+If any issue arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de)
 
