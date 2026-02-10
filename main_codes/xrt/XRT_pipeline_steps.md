@@ -1,4 +1,4 @@
-# A step-by-step guide on how to run the UVOT pipeline
+# A step-by-step guide on how to run the XRT pipeline
 
 ## Starting directory structure:
 The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273). 
