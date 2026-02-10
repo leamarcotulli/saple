@@ -19,11 +19,21 @@ This semi-automated pipelines are not meant to substitute but to complement all 
 
 The user needs to install the latest version of [HEASoft](https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/) together with the latest __Swift__ [CALDB](https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html) files on their local computer or try it on a [SciServer](https://heasarc.gsfc.nasa.gov/docs/sciserver/) heasoft environment. The developers have not tested it in the latter, so if you try and some issue arise, please do let us know.
 
-Required python packages: 
-a. astropy
-b. sys, os
-c. numpy
-d. pandas
+**[IMPORTANT]** -- you need to make sure [**pyXSPEC**](https://heasarc.gsfc.nasa.gov/docs/software/xspec/python/html/buildinstall.html) works before going any further! 
+
+Make sure to create your own conda environment:
+```
+conda create --name sample
+```
+Then install the following required python packages : 
+- [x]  astropy
+- [x]  sys
+- [x]  os
+- [x]  numpy
+- [x]  pandas
+- [x]  warnings
+- [x]  fnmatch
+- [ ]  
 
 
 
