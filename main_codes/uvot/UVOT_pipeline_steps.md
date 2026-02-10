@@ -52,7 +52,8 @@ Your folder structure should look like this:
    + sw*obsid*filt_src.reg (copy of the original src_uvot.reg)
    + sw*obsid*filt_centr_src.reg (centroided version of the src_uvot.reg)
    + sw*obsid*filt_bkg.reg  (copy of the original bkg_uvot.reg).
-   In the folder **Swift/uvot_png/** (created by the code) you will find the **saved ds9 UVOT images** with the source and background regions for every filter. 
+   
+In the folder **Swift/uvot_png/** (created by the code) you will find the **saved ds9 UVOT images** with the source and background regions for every filter. 
 
 ### Step 3. -- [IMPORTANT] Remove UVOT bad exposures
 1. In the Swift/ folder, you should now see the folder uvot_png/. Open it and check the output images to ensure your bkg and source region are well selected.
@@ -65,15 +66,15 @@ Your folder structure should look like this:
 8. If there are ANY of the above issues, you can remove the corresponding event file file Swift/*obsid*/uvot/image/sw*obsid*filt*sk.evt 
         
 ### Step 4. -- Run uvotsource on all obsids/filt
-1. Run:
-   ```
-   python uvotsource_run.py > uvotsource.log 
-   ```
-   **Result**: This will run the uvosource on all the observations and filters present in the folder Swift/; check the log file to see when it's done.
+Run:
+```
+python uvotsource_run.py > uvotsource.log 
+```
+**Result**: This will run the uvosource on all the observations and filters present in the folder Swift/; check the log file to see when it's done.
         
 ### Step 5. -- Convert magnitudes to flux
-1. Run:
-   ```
-   python uvotsource_extract_flux.py > uvotsource_extract_flux.log 
-   ```
-   **Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes. The code gets the info from the uvotsource output AND calculates the extinction corrected flux [erg/cm/s] and errors (not the same as the uvot output). 
+Run:
+```
+python uvotsource_extract_flux.py > uvotsource_extract_flux.log 
+```
+**Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes. The code gets the info from the uvotsource output AND calculates the extinction corrected flux [erg/cm/s] and errors (not the same as the uvot output). 
