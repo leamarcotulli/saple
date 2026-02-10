@@ -6,3 +6,15 @@ Welcome to SAPLE, the Swift Analysis Pipeline for Lightcurve Extraction. The cod
 2. Run the **XRT analysis pipeline** on any number of observations you have for one astrophysical source & extract the **__powerlaw spectral__ information** (flux and photon index) for all observations;
 
 ## Main developer & Tester : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
+
+# Disclaimer
+
+This semi-automated pipelines are not meant to substitute but to complement all the fantastic tools the __Swift__ team has set up. We highly encourage any user to go through the documentation [here](https://www.swift.ac.uk/analysis/index.php) to properly understand the steps that our pipeline streamlines.
+
+# What is different in SAPLE?
+
+1. A **UVOT semi-automated pipeline** that also returns the __absorption corrected__ specific fluxes for your source, which to our knowledge is not available yet;
+
+2. For both XRT and UVOT, the user will produce a user made source and background regions and visually check the images for artifacts/issues with the exposure. The XRT online tool to build products runs these checks in the background (and likely much better than any of us can do), but does not allow for user input. With SAPLE, you will be able to make your own (maybe bad) choices for source/background regions.
+
+   
