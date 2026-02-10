@@ -13,9 +13,9 @@ This semi-automated pipelines are not meant to substitute, but to complement all
 
 1. A **UVOT semi-automated pipeline** that also returns the _absorption corrected_ specific fluxes for your source, a tool which to our knowledge is not available yet to the community;
 
-2. For both XRT and UVOT, the user will produce a user made source and background regions and visually check the images for artifacts/issues with the exposure. The XRT online tool to build products runs these checks in the background (and likely much better than any of us can do), but does not allow for user input. With SAPLE, you will be able to make your own (maybe bad) choices for source/background regions.
+2. For both XRT and UVOT, the user will produce a **user made source and background regions** and visually check the images for artifacts/issues with the exposure. The XRT online tool to build products runs these checks in the background (and likely much better than any of us can do), but does not allow for user input. With SAPLE, you will be able to make your own (maybe bad) choices for source/background regions.
 
-3. For XRT, you will be able extract a lightcurve of both flux and photon index (with associated uncertainties).
+3. For XRT, you will be able extract a **lightcurve of both flux and photon index** (with associated uncertainties).
 
 4. Upcoming developments [ongoing]: stay tuned for the incorporation of BXA! 
 
