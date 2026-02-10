@@ -25,12 +25,7 @@ Your folder structure should look like this:
    |-- obsid_N/
 ```
 
-############################
-#
-#--------UVOT pipeline
-#
-############################
-
+## UVOT pipeline
 
 ### Step 0. Initialize heasoft and caldb path
 
