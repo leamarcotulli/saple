@@ -38,7 +38,26 @@ Then install the following required python packages :
 - [x]  warnings
 - [x]  fnmatch
 
+# How to use SAPLE?
+The main codes for the SAPLE analysis are stored in main_codes/xrt and main_codes/uvot.
+
+The user has to carefully follow the step-by-step guide for each instrument if they want SAPLE to work. 
+
+For XRT follow the instructions at: **main_codes/xrt/XRT_pipeline_steps.md**
+
+For UVOT follow the instructions at: **main_codes/uvot/UVOT_pipeline_steps.md**
+
 
 ## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
+If any issue arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de)
+
+## If you use SAPLE, you better cite: 
+TBD (SAPLE) <br>
+UVOT/XRT/Swift papers I use in the analyis <br>
+links to the nh stuff <br>
+
+## Papers that used SAPLE: 
+Pablo's ; Tiffany's student; Vittoria (?)
+
 
 
