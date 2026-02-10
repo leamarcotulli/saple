@@ -5,8 +5,6 @@ Welcome to SAPLE, the Swift Analysis Pipeline for Lightcurve Extraction. The cod
 
 2. Run the **XRT analysis pipeline** on any number of observations you have for one astrophysical source & extract the **__powerlaw spectral__ information** (flux and photon index) for all observations;
 
-## Main developer & Tester : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
-
 # Disclaimer
 
 This semi-automated pipelines are not meant to substitute but to complement all the fantastic tools the __Swift__ team has set up. We highly encourage any user to go through the documentation [here](https://www.swift.ac.uk/analysis/index.php) to properly understand the steps that our pipeline streamlines.
@@ -17,4 +15,19 @@ This semi-automated pipelines are not meant to substitute but to complement all 
 
 2. For both XRT and UVOT, the user will produce a user made source and background regions and visually check the images for artifacts/issues with the exposure. The XRT online tool to build products runs these checks in the background (and likely much better than any of us can do), but does not allow for user input. With SAPLE, you will be able to make your own (maybe bad) choices for source/background regions.
 
-   
+# Prerequisites to using SAPLE
+
+The user needs to install the latest version of [HEASoft](https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/) together with the latest __Swift__ [CALDB](https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html) files on their local computer or try it on a [SciServer](https://heasarc.gsfc.nasa.gov/docs/sciserver/) heasoft environment. The developers have not tested it in the latter, so if you try and some issue arise, please do let us know.
+
+Required python packages: 
+a. astropy
+b. sys, os
+c. numpy
+d. pandas
+
+
+
+
+## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
+
+
