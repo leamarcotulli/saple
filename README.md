@@ -15,6 +15,10 @@ This semi-automated pipelines are not meant to substitute, but to complement all
 
 2. For both XRT and UVOT, the user will produce a user made source and background regions and visually check the images for artifacts/issues with the exposure. The XRT online tool to build products runs these checks in the background (and likely much better than any of us can do), but does not allow for user input. With SAPLE, you will be able to make your own (maybe bad) choices for source/background regions.
 
+3. For XRT, you will be able extract a lightcurve of both flux and photon index (with associated uncertainties).
+
+4. Upcoming developments [ongoing]: stay tuned for the incorporation of BXA! 
+
 # Prerequisites to using SAPLE
 
 The user needs to install the latest version of [HEASoft](https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/) together with the latest __Swift__ [CALDB](https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html) files on their local computer or try it on a [SciServer](https://heasarc.gsfc.nasa.gov/docs/sciserver/) heasoft environment. The developers have not tested it in the latter, so if you try and some issue arise, please do let us know.
