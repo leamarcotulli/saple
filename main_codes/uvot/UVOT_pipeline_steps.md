@@ -1,6 +1,9 @@
-Starting directory structure:
+# A step-by-step guide on how to run the UVOT pipeline
 
-PKS_1424/ [main_dir]
+## Starting directory structure:
+The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273):
+
+3C_273/ [main_dir]
 |
 -- make_base_source_info_file.py
 -- uvot_src_bkg_regions.py
