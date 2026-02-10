@@ -5,4 +5,4 @@ Welcome to SAPLE, the Swift Analysis Pipeline for Lightcurve Extraction. The cod
 
 2. Run the **XRT analysis pipeline** on any number of observations you have for one astrophysical source & extract the **__powerlaw spectral__ information** (flux and photon index) for all observations;
 
-## Main developer & Tester : Lea Marcotulli & N&uacute;ria Torres-Alb`a
+## Main developer & Tester : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
