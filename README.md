@@ -21,7 +21,7 @@ The user needs to install the latest version of [HEASoft](https://heasarc.gsfc.n
 
 **[IMPORTANT]** -- you need to make sure [**pyXSPEC**](https://heasarc.gsfc.nasa.gov/docs/software/xspec/python/html/buildinstall.html) works before going any further! 
 
-Make sure to create your own conda environment:
+Create your own conda environment:
 ```
 conda create --name sample
 ```
