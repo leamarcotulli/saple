@@ -33,9 +33,6 @@ Then install the following required python packages :
 - [x]  pandas
 - [x]  warnings
 - [x]  fnmatch
-- [ ]  
-
-
 
 
 ## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
