@@ -2,7 +2,7 @@
 
 ## Starting directory structure:
 The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273):
-
+```
 3C_273/ [main_dir]
 |
 -- make_base_source_info_file.py
@@ -15,7 +15,7 @@ The main directory (main_dir) can be given any name you like. However, we highly
    |-- obsid_1/
    |-- obsid_1/
    |-- obsid_../
-
+```
 ############################
 #
 #--------UVOT pipeline
