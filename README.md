@@ -43,9 +43,9 @@ The main codes for the SAPLE analysis are stored in main_codes/xrt and main_code
 
 The user has to carefully follow the step-by-step guide for each instrument if they want SAPLE to work. 
 
-For XRT follow the instructions at: **main_codes/xrt/XRT_pipeline_steps.md**
+<ins>For XRT follow the instructions at: **main_codes/xrt/XRT_pipeline_steps.md**</ins>
 
-For UVOT follow the instructions at: **main_codes/uvot/UVOT_pipeline_steps.md**
+<ins>For UVOT follow the instructions at: **main_codes/uvot/UVOT_pipeline_steps.md**</ins>
 
 ## If you use SAPLE, you better cite: 
 TBD (SAPLE) <br>
