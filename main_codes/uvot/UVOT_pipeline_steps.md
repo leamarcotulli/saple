@@ -1,7 +1,14 @@
 # A step-by-step guide on how to run the UVOT pipeline
 
 ## Starting directory structure:
-The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273):
+The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273). 
+
+In the main directory, copy all the uvot codes ( make_base_source_info_file.py; uvot_src_bkg_regions.py; uvot_source_extract_flux.py).
+
+In the main directory, make a subfolder called Swift/ (this name is non negotiable) and download ALL the Swift observations you want to analyse in Swift/. The default name of the observations folders is the obsid number. Again DO NOT change the default name. 
+
+Your folder structure should look like this: 
+
 ```
 3C_273/ [main_dir]
 |
@@ -13,9 +20,11 @@ The main directory (main_dir) can be given any name you like. However, we highly
 -- Swift/
    |
    |-- obsid_1/
-   |-- obsid_1/
+   |-- obsid_2/
    |-- obsid_../
+   |-- obsid_N/
 ```
+
 ############################
 #
 #--------UVOT pipeline
@@ -23,19 +32,24 @@ The main directory (main_dir) can be given any name you like. However, we highly
 ############################
 
 
-Step 0. Initialize heasoft and caldb path
+### Step 0. Initialize heasoft and caldb path
 
 
-Step 1. -- Create the file with the relevant information about your source
+### Step 1. -- Create the file with the relevant information about your source
     1a. With a text editor, open the code ***make_base_source_info_file.py** and change info about the source (RA,DEC,etc) 
+    
     1b. Run: python make_base_source_info_file.py 
         Result: This creates the **base_info.csv** file with all the info that we need about the source for the analysis.
         
-Step 2. -- Create UVOT source and background regions
+### Step 2. -- Create UVOT source and background regions
+
     2a. Open any UVOT images of the source (e.g. ds9 Swift/00035021001/uvot/image/sw00035021001ubb_sk.img.gz)
+    
     2b. Make a source region of 5" at the source location (save it at src_uvot.reg in Swift/)
+    
     2c. Make a background region close to the source and without anything else in it (~15" but can be more/less, user should choose)
-    2d. Run: python uvot_src_bkg_region.py (the code will ask for a user input [hit enter] before starting)
+    
+    2d. Run: python uvot_src_bkg_region.py (the code will ask for a user input [hit enter] before starting)<br>   
         Result: in every Swift/*obsid*/uvot/image/ folder, you should have created 3 files: sw*obsid*filt_src.reg, sw*obsid*filt_centr_src.reg, sw*obsid*filt_bkg.reg. In the folder Swift/uvot_png/ you will find the saved UVOT images with the source and background regions for every filter. 
 
 Step 3. -- [IMPORTANT] Remove UVOT bad exposures
