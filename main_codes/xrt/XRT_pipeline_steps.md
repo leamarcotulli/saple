@@ -89,7 +89,9 @@ python xselect_run.py > xselect_run.log
 ## XSPEC FIT 
 
 ### Step 6. -- Get the latest XRT RMF file
-Copy the latest XRT RMF file you need into the Swift/ folder as **xrt.rmf**
+Copy the latest XRT RMF files for PC and WT you need into the Swift/ folder as **xrt_pc.rmf** and **xrt_wt.rmf**
+
+Please check [here](https://www.swift.ac.uk/analysis/xrt/rmfarf.php) which ones are the latest.
      
 ### Step 7. -- Run the powerlaw fit
 Run:
