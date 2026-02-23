@@ -6,11 +6,7 @@ import sys, os
 import numpy as np
 from astropy import units as u
 from astropy.coordinates import SkyCoord
-#from astroquery.ned import Ned
-
-import subprocess 
 from os.path import isfile, join
-#import extinction
 
 import warnings
 
@@ -138,32 +134,7 @@ def spec_flux_abmag(m, wavel):
 # should be imported or defined here
 
 def extract_data_and_save_to_dataframe(directory_path, ebv_value):
-    """
-    columns = ['filt', 
-               'tstart[MET]', 
-               'tstop[MET]', 
-               'tstart[MJD]', 
-               'tstop[MJD]', 
-               'nu[hz]', 
-               'wave[AA]', 
-               'ab_mag', 
-               'ab_mag_err', 
-               'ab_mag_err_stat',
-               'ab_mag_err_syst', 
-               'ab_mag_ext_corr', 
-               'flux_uvot', 
-               'flux_err_stat_uvot', 
-               'flux_err_syst_uvot', 
-               'flux_bkg_uvot',
-               'sflux_hz[erg/cm2/s/Hz]', 
-               'sflux_hz_err_d[erg/cm2/s/Hz]', 
-               'sflux_hz_err_u[erg/cm2/s/Hz]',  
-               'sflux_wave[erg/cm2/s/AA]', 
-               'sflux_wave_err_d[erg/cm2/s/AA]', 
-               'sflux_wave_err_u[erg/cm2/s/AA]']
-     
-    data_frame = pd.DataFrame(columns=columns)
-    """
+
     rows = []
     if 'Swift' in os.listdir(directory_path):
         os.chdir(os.path.join(directory_path, 'Swift'))
@@ -190,6 +161,8 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                     flux, flux_err_stat, flux_err_syst = 0., 0., 0.
                                     print(files[0:16])
                                     
+                                    obsid = number_observation
+                                    
                                     filt = files[13:16]
                                     filt_freq = 0.
 
@@ -206,6 +179,7 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                     mag_err = data_uvot.field('AB_MAG_ERR')[0]
                                     mag_err_stat = data_uvot.field('AB_MAG_ERR_STAT')[0]
                                     mag_err_syst = data_uvot.field('AB_MAG_ERR_SYS')[0]
+                                    mag_upper_limit = data_uvot.field('AB_MAG_LIM')[0]
                                     flux_aa = data_uvot.field('FLUX_AA')[0]
                                     flux_aa_err = data_uvot.field('FLUX_AA_ERR')[0]
                                     flux = data_uvot.field('FLUX_HZ')[0]
@@ -227,20 +201,26 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                         flux_err_hz_u, flux_err_wave_u = flux_s_hz_u-flux_s_hz, flux_s_wave_u-flux_s_wave
                                         flux_err_hz_d, flux_err_wave_d = flux_s_hz-flux_s_hz_d, flux_s_wave-flux_s_wave_d
                                         
+                                        upper_limit = np.array(int(0))
+                                                                                
                                     elif mag != 99. and mag_err == 99.:
                                         ext_corr = Al_obs_Roming(ebv_value, filt)
                                         mag_corr_ab = mag_corr_obs(mag, ext_corr)
                                         flux_s_hz, flux_s_wave  = spec_flux_abmag(mag_corr_ab, wave_tmp)
                                         
                                         flux_err_hz_u, flux_err_wave_u, flux_err_hz_d, flux_err_wave_d  =np.array([0.]), np.array([0.]), np.array([0.]), np.array([0.])
-                                        
+                                        upper_limit = np.array(int(1))
                                     else:
-                                        mag_corr_ab = np.array([0.])
+                                        ext_corr = Al_obs_Roming(ebv_value, filt)
+                                        mag_corr_ab = mag_corr_obs(mag_upper_limit, ext_corr)
+                                        flux_s_hz, flux_s_wave  = spec_flux_abmag(mag_corr_ab, wave_tmp)
+                                        
                                         flux_s_hz, flux_s_wave = np.array([0.]), np.array([0.])
                                         flux_err_hz_u, flux_err_wave_u, flux_err_hz_d, flux_err_wave_d  = np.array([0.]), np.array([0.]), np.array([0.]), np.array([0.])
-                                    
-                                
+                                        upper_limit = np.array(int(1))   
+                                                                     
                                     new_row = {
+                                        'obsid': obsid,
                                         'filt': filt, 
                                         'tstart[MET]': tstart_met, 
                                         'tstop[MET]': tstop_met, 
@@ -253,16 +233,17 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                         'ab_mag_err_stat': mag_err_stat, 
                                         'ab_mag_err_syst': mag_err_syst, 
                                         'ab_mag_ext_corr': mag_corr_ab[0],
-                                        'flux_uvot': flux, 
-                                        'flux_err_stat_uvot': flux_err_stat, 
-                                        'flux_err_syst_uvot': flux_err_syst, 
-                                        'flux_bkg_uvot': flux_back,
-                                        'sflux_hz[erg/cm2/s/Hz]': flux_s_hz[0], 
-                                        'sflux_hz_err_d[erg/cm2/s/Hz]': flux_err_hz_d[0],
-                                        'sflux_hz_err_u[erg/cm2/s/Hz]': flux_err_hz_u[0],                                         
-                                        'sflux_wave[erg/cm2/s/AA]': flux_s_wave[0], 
-                                        'sflux_wave_err_d[erg/cm2/s/AA]': flux_err_wave_d[0],
-                                        'sflux_wave_err_u[erg/cm2/s/AA]': flux_err_wave_u[0] 
+                                        'sflux_hz_uvot[erg/cm2/s/Hz]': flux, 
+                                        'sflux_hz_err_stat_uvot[erg/cm2/s/Hz]': flux_err_stat, 
+                                        'sflux_hz_err_syst_uvot[erg/cm2/s/Hz]': flux_err_syst, 
+                                        'sflux_hz_bkg_uvot[erg/cm2/s/Hz]': flux_back,
+                                        'sflux_hz_saple[erg/cm2/s/Hz]': flux_s_hz[0], 
+                                        'sflux_hz_err_d_saple[erg/cm2/s/Hz]': flux_err_hz_d[0],
+                                        'sflux_hz_err_u_saple[erg/cm2/s/Hz]': flux_err_hz_u[0],                                         
+                                        'sflux_wave_saple[erg/cm2/s/AA]': flux_s_wave[0], 
+                                        'sflux_wave_err_d_saple[erg/cm2/s/AA]': flux_err_wave_d[0],
+                                        'sflux_wave_err_u_saple[erg/cm2/s/AA]': flux_err_wave_u[0],
+                                        'upper_limit': upper_limit
                                         
                                     }
                                     

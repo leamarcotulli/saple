@@ -49,7 +49,7 @@ if 'Swift' in os.listdir('.'):
     
     res = open('params_xspec.csv', 'w+')
     
-    res.write('#inst, obs_id, exposure_time[s], date, count/s(0.3-10), pl_idx, pl_idx_l, pl_idx_h, flux_abs, flux_abs_l, flux_abs_h, flux_unabs, cstat, dof\n')
+    res.write('inst,obs_id,exposure_time[s],date,count/s(0.3-10),pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_l,flux_abs_h,flux_unabs,cstat,dof\n')
     
     path_to_rmf = os.getcwd()
 
@@ -96,7 +96,7 @@ if 'Swift' in os.listdir('.'):
                             string0='grppha infile=\'src_pc.pha\' '\
                                     'outfile=\'src_pc_bkg_arf_rmf.pha\' '\
                                     'comm=\'chkey ancrfile out_pc.arf&chkey backfile bkg_pc.pha&chkey '\
-                                    'respfile %sxrt.rmf&exit\''%(path_to_rmf)
+                                    'respfile %sxrt_pc.rmf&exit\''%(path_to_rmf)
                             f.write(string0)
                             f.close()
                             os.system('bash '+files[0:20]+'_pc_grppha.sh')
@@ -105,7 +105,7 @@ if 'Swift' in os.listdir('.'):
                             
                             f1 = open(files[0:20]+"_pc_ftgrppha.sh", "w+") #w=write, +=add if the file is not there
                                                         
-                            string1 = 'ftgrouppha infile=src_pc_bkg_arf_rmf.pha respfile=../xrt.rmf outfile=src_pc_opt.pha grouptype=opt clobber=yes'
+                            string1 = 'ftgrouppha infile=src_pc_bkg_arf_rmf.pha respfile=../xrt_pc.rmf outfile=src_pc_opt.pha grouptype=opt clobber=yes'
                             f1.write(string1)
                             f1.close()
                             os.system('bash '+files[0:20]+'_pc_ftgrppha.sh')
@@ -116,7 +116,7 @@ if 'Swift' in os.listdir('.'):
                                 s = AllData(1)
                                 rate = s.rate[0]
                                 if rate==0.:
-                                   string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n"
+                                   string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
                                    res.write(string)
                                    continue
                                    
@@ -130,7 +130,7 @@ if 'Swift' in os.listdir('.'):
                                 
                             except:
                             
-                                string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n"
+                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -153,7 +153,7 @@ if 'Swift' in os.listdir('.'):
                                 Fit.perform()
                             except:
                                 #string ='0 0 0 0 0 0 0 0 0 0 0 0\n'
-                                string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n"
+                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -187,7 +187,7 @@ if 'Swift' in os.listdir('.'):
                             
                             # Using f-string for formatting
                             
-                            string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, {rate0310}, {indx}, {i_l}, {i_h}, {f}, {f_l}, {f_h}, {f_unabs}, {cstat_val}, {dof}\n"
+                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
                              
                             res.write(string)
                             
@@ -220,7 +220,7 @@ if 'Swift' in os.listdir('.'):
                             string0='grppha infile=\'src_wt.pha\' '\
                                     'outfile=\'src_wt_bkg_arf_rmf.pha\' '\
                                     'comm=\'chkey ancrfile out_wt.arf&chkey backfile bkg_wt.pha&chkey '\
-                                    'respfile %sxrt.rmf&exit\''%(path_to_rmf)
+                                    'respfile %sxrt_wt.rmf&exit\''%(path_to_rmf)
                             f.write(string0)
                             f.close()
                             os.system('bash '+files[0:20]+'_wt_grppha.sh')
@@ -229,7 +229,7 @@ if 'Swift' in os.listdir('.'):
                             
                             f1 = open(files[0:20]+"_wt_ftgrppha.sh", "w+") #w=write, +=add if the file is not there
                                                         
-                            string1 = 'ftgrouppha infile=src_wt_bkg_arf_rmf.pha respfile=../xrt.rmf outfile=src_wt_opt.pha grouptype=opt clobber=yes'
+                            string1 = 'ftgrouppha infile=src_wt_bkg_arf_rmf.pha respfile=../xrt_pc.rmf outfile=src_wt_opt.pha grouptype=opt clobber=yes'
                             f1.write(string1)
                             f1.close()
                             os.system('bash '+files[0:20]+'_wt_ftgrppha.sh')
@@ -240,7 +240,7 @@ if 'Swift' in os.listdir('.'):
                                 s = AllData(1)
                                 rate = s.rate[0]
                                 if rate==0.:
-                                   string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n"
+                                   string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
                                    res.write(string)
                                    continue
                                    
@@ -254,7 +254,7 @@ if 'Swift' in os.listdir('.'):
                                 
                             except:
                             
-                                string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n"
+                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -277,7 +277,7 @@ if 'Swift' in os.listdir('.'):
                             try:
                                 Fit.perform()
                             except:
-                                string =f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0\n"
+                                string =f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -310,7 +310,7 @@ if 'Swift' in os.listdir('.'):
                             
                             # Using f-string for formatting
                             
-                            string = f"{inst_tmp}, {obsid}, {exp_time}, {date_start}, {rate0310}, {indx}, {i_l}, {i_h}, {f}, {f_l}, {f_h}, {f_unabs}, {cstat_val}, {dof}\n"
+                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
                              
                             res.write(string)
                             
@@ -326,3 +326,6 @@ if 'Swift' in os.listdir('.'):
 os.chdir(main_path)
  
 
+print("#---------------------------#")
+print("Finished -- The XSPEC fit has been run on all observations.")
+print("#---------------------------#")
