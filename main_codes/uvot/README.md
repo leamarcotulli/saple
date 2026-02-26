@@ -27,8 +27,13 @@ Your folder structure should look like this:
 
 ## UVOT pipeline
 
-### Step 0. Initialize heasoft and caldb path
-
+### Step 0. Activate conda environment, initialize HEASoft and CALDB path
+E.g. <br>
+```
+conda activate saple
+heainit
+caldb
+```
 
 ### Step 1. -- Create the file with the relevant information about your source
 1. With a text editor, open the code ***make_base_source_info_file.py** and change info about the source (RA,DEC,etc) 
