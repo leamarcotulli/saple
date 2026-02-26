@@ -7,7 +7,7 @@ Welcome to SAPLE, the Swift Analysis Pipeline for Lightcurve Extraction. The cod
 
 # Disclaimer
 
-This semi-automated pipelines are not meant to substitute, but to complement all the fantastic tools the _Swift_ team has set up. We highly encourage any user to go through the documentation [here](https://www.swift.ac.uk/analysis/index.php) to properly understand the steps that our pipeline streamlines.
+This semi-automated pipelines are **not meant to substitute, but to complement** all the fantastic tools the _Swift_ team has set up. We highly encourage any user to go through the documentation [here](https://www.swift.ac.uk/analysis/index.php) to properly understand the steps that our pipeline streamlines.
 
 In particular, the [XRT Swift tools](https://www.swift.ac.uk/user_objects/) are optimized for source detection, stacking of spectra and images, and producing XRT flux light-curves. The SAPLE XRT pipeline is optimized to provide lightcurves in both flux and photon index (see next section), the latter not provided by the official tools at the moment. Therefore, we strongly recommend to use the XRT Swift tools unless you want to obtain the lightcurve information SAPLE provides.
 
