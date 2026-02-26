@@ -49,6 +49,9 @@ The user has to carefully follow the step-by-step guide for each instrument if t
 
 <ins>For UVOT follow the instructions at:</ins> **main_codes/uvot/README.md**
 
+If you would like to have SAPLE data products but for some reason you are not able to use the pipeline, we are **happy to run SAPLE for you** and provide you with the necessary data products. The condition for us to do this is an _invitation of co-authorship_ into your publication using SAPLE. Please send us an email to inquire about this (see contact info below).  
+
+
 ## If you use SAPLE, please cite: 
 TBD (SAPLE) <br>
 Publications that have already used SAPLE:<br>
@@ -63,5 +66,4 @@ Pablo's ; Tiffany's student; Vittoria (?)
 
 ## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
 If any problems arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de) ; [ntorresalba@gmail.com](mailto:ntorresalba@gmail.com) <br><br>
-We are **happy to run SAPLE for you** and provide you with the necessary data products. The condition for us to do this is an _invitation of co-authorship_ into your publication using SAPLE. Please send us an email to inquire about this.  
 
