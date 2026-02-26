@@ -54,14 +54,12 @@ If you would like to have SAPLE data products but for some reason you are not ab
 
 ## If you use SAPLE, please cite: 
 TBD (SAPLE) <br>
-Publications that have already used SAPLE:<br>
+
+## Publications that have already used SAPLE: 
 [Penil et al. 2024a](https://ui.adsabs.harvard.edu/abs/2024MNRAS.52710168P/abstract)<br>
 [Penil et al. 2024b](https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.1365P/abstract)<br>
 Giannoli et al. in prep.<br>
 Nelson et al. in prep.<br>
-
-## Papers that used SAPLE: 
-Pablo's ; Tiffany's student; Vittoria (?)
 
 
 ## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
