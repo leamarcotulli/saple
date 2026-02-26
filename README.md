@@ -62,6 +62,6 @@ Pablo's ; Tiffany's student; Vittoria (?)
 
 
 ## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
-If any problems arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de) <br>
-We are **happy to run SAPLE for you** and provide you with the necessary data products. The condition for us to do this is an _invitation of co-authorship_ into your publication using SAPLE. 
+If any problems arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de) ; [ntorresalba@gmail.com](mailto:ntorresalba@gmail.com) <br><br>
+We are **happy to run SAPLE for you** and provide you with the necessary data products. The condition for us to do this is an _invitation of co-authorship_ into your publication using SAPLE. Please send us an email to inquire about this.  
 
