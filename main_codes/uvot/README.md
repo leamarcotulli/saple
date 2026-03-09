@@ -52,11 +52,11 @@ caldb
    ```
    python uvot_src_bkg_region.py > uvot_src_bkg_region.log
    ```
-   The code will ask for a user input _hit ENTER_ before starting
+   The code will ask for a user input _hit ENTER_ before starting. <br>
    **Result**: in every Swift/*obsid*/uvot/image/ folder, you should have created 3 files:
-   + sw*obsid*filt_src.reg (copy of the original src_uvot.reg)
-   + sw*obsid*filt_centr_src.reg (centroided version of the src_uvot.reg)
-   + sw*obsid*filt_bkg.reg  (copy of the original bkg_uvot.reg).
+   + sw*obsid*filt_src.reg (copy of the original src_uvot.reg; e.g. _sw00035017073um2_src.reg_)
+   + sw*obsid*filt_centr_src.reg (centroided version of the src_uvot.reg; e.g. _sw00035017073um2_centr_src.reg_)
+   + sw*obsid*filt_bkg.reg  (copy of the original bkg_uvot.reg; e.g. _sw00035017073um2_bkg.reg_).
    
 In the folder **Swift/uvot_png/** (created by the code) you will find the **saved ds9 UVOT images** with the source and background regions for every filter. 
 
