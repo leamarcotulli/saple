@@ -5,14 +5,12 @@ import sys, os
 import numpy as np
 from astropy import units as u
 from astropy.coordinates import SkyCoord
-
 import os
 from os.path import isfile, join
-
 import pandas as pd
-####################################################################
-from fnmatch import fnmatch
+from tqdm import tqdm 
 import re
+
 
 try: 
     df = pd.read_csv('base_info.csv')
@@ -111,27 +109,29 @@ display = "ds9 &\n\
            sleep 10"
 os.system(display)
 
+
 for i in range(dir_len):
-    for j in range(len(paths[i])):
-        image='xpaset -p ds9 fits %s\n\
-               xpaset -p ds9 smooth \n\
-               xpaset -p ds9 scale log \n\
-               xpaset -p ds9 zoom to fit \n\
-               xpaset -p ds9 region load %s\n\
-               xpaset -p ds9 region select all\n\
-               xpaset -p ds9 region centroid\n\
-               xpaset -p ds9 region format ds9\n\
-               xpaset -p ds9 region system wcs\n\
-               xpaset -p ds9 region sky fk5\n\
-               xpaset -p ds9 region save %s\n\
-               xpaset -p ds9 region load %s\n\
-               xpaset -p ds9 region select all\n\
-               xpaset -p ds9 region centroid\n\
-               xpaset -p ds9 saveimage %s\n\
-               xpaset -p ds9 frame clear\n'%(paths[i][j], paths_to_srcs[i][j], paths_to_obs_srcs[i][j],\
-                                           paths_to_bkg[i][j], paths_to_save[i][j])
-        os.system(image)
-          
+    with tqdm(total = len(paths[i]), position = 0, desc = "Saving images") as pbar:
+        for j in range(len(paths[i])): 
+            image='xpaset -p ds9 fits %s\n\
+                   xpaset -p ds9 smooth \n\
+                   xpaset -p ds9 scale log \n\
+                   xpaset -p ds9 zoom to fit \n\
+                   xpaset -p ds9 region load %s\n\
+                   xpaset -p ds9 region select all\n\
+                   xpaset -p ds9 region centroid\n\
+                   xpaset -p ds9 region format ds9\n\
+                   xpaset -p ds9 region system wcs\n\
+                   xpaset -p ds9 region sky fk5\n\
+                   xpaset -p ds9 region save %s\n\
+                   xpaset -p ds9 region load %s\n\
+                   xpaset -p ds9 region select all\n\
+                   xpaset -p ds9 region centroid\n\
+                   xpaset -p ds9 saveimage %s\n\
+                   xpaset -p ds9 frame clear\n'%(paths[i][j], paths_to_srcs[i][j], paths_to_obs_srcs[i][j],\
+                                               paths_to_bkg[i][j], paths_to_save[i][j])
+            os.system(image)
+            pbar.update(1)
 
 
 #load ../src.reg -saveimage %s_ima.jpeg -exit'

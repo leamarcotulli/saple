@@ -6,12 +6,7 @@ from astropy import units as u
 from astropy.coordinates import SkyCoord
 from os.path import isfile, join
 import pandas as pd
-####################################################################
-from fnmatch import fnmatch
-from tqdm import tqdm
-
-
-
+from tqdm import tqdm 
 
 try: 
     df = pd.read_csv('base_info.csv')

@@ -5,14 +5,12 @@ import sys, os
 import numpy as np
 from astropy import units as u
 from astropy.coordinates import SkyCoord
-
 import os
 from os.path import isfile, join
-
 import pandas as pd
-####################################################################
-from fnmatch import fnmatch
+from tqdm import tqdm 
 import re
+
 
 # Function to extract the circle parameters from the DS9 region file content
 def extract_circle_parameters(filename):
@@ -71,8 +69,9 @@ counter = 0 ###when you do multiple sources at once
 
 src_wt_size_asec = 50 ##arcsec
 
-print("The chosen radius for WT region size is:%.1f\n\n"%src_wt_size_asec)
-print("If you want to change it, press <Crtl+C> and edit line 73.\n\n")
+print("#-----------------------#")
+print("The chosen radius for WT region size is: %.1f\n\n arces"%src_wt_size_asec)
+print("If you want to change it, press <Crtl+C> and edit line 70\n\n")
 print("Otherwise, press <ENTER>") 
 input()
 
@@ -147,7 +146,8 @@ if 'Swift' in os.listdir('.'):
                             paths_to_wt_srcs_centr[counter].append(src_wt_centr_reg)
                         else: 
                             continue 
-                    os.chdir('..')        
+                    os.chdir('..')     
+                    
                                    
 ####NOW SAVE FOR EVERY SOURCE ITS SOURCE REGION IN PHYISICAL COORD & CENTROIDED
 ###OPEN DS9 & RUN IN THE BACKGROUND
@@ -156,9 +156,8 @@ display = "ds9 &\n\
            sleep 10"
 os.system(display)
 
-          
-for i in range(dir_len):        
-    for k in range(len(paths_wt[i])):               
+for i in range(dir_len):
+    for k in range(len(paths_wt[i])):            
         image_wt='xpaset -p ds9 fits %s\n\
                   xpaset -p ds9 scale log \n\
                   xpaset -p ds9 region load %s\n\
@@ -263,21 +262,24 @@ if 'Swift' in os.listdir('.'):
 ### NOW SAVE FOR EVERY SOURCE ITS BKG REGION IN PHYISICAL COORD & CENTROIDED
 ### OPEN DS9 & RUN IN THE BACKGROUND
 
-for i in range(dir_len):        
-    for k in range(len(paths_wt[i])):               
-        image_wt='xpaset -p ds9 fits %s\n\
-                  xpaset -p ds9 scale log \n\
-                  xpaset -p ds9 region load %s\n\
-                  xpaset -p ds9 region format ds9\n\
-                  xpaset -p ds9 region system wcs\n\
-                  xpaset -p ds9 region sky fk5\n\
-                  xpaset -p ds9 region save %s\n\
-                  xpaset -p ds9 region load %s\n\
-                  xpaset -p ds9 saveimage %s\n\
-                  xpaset -p ds9 frame clear'%(paths_wt[i][k], paths_to_wt_bkg[i][k],\
-                                           paths_to_wt_bkg_fk5[i][k], paths_to_wt_srcs_phys[i][k],\
-                                           paths_to_save_wt[i][k])
-        os.system(image_wt)  
+
+for i in range(dir_len):
+    with tqdm(total = len(paths_wt[i]), position = 0, desc = "Saving images") as pbar:
+        for k in range(len(paths_wt[i])):              
+            image_wt='xpaset -p ds9 fits %s\n\
+                      xpaset -p ds9 scale log \n\
+                      xpaset -p ds9 region load %s\n\
+                      xpaset -p ds9 region format ds9\n\
+                      xpaset -p ds9 region system wcs\n\
+                      xpaset -p ds9 region sky fk5\n\
+                      xpaset -p ds9 region save %s\n\
+                      xpaset -p ds9 region load %s\n\
+                      xpaset -p ds9 saveimage %s\n\
+                      xpaset -p ds9 frame clear'%(paths_wt[i][k], paths_to_wt_bkg[i][k],\
+                                               paths_to_wt_bkg_fk5[i][k], paths_to_wt_srcs_phys[i][k],\
+                                               paths_to_save_wt[i][k])
+            os.system(image_wt)  
+            pbar.update(1)
 
 
 print("#---------------------------#")
