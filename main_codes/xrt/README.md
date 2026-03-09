@@ -76,13 +76,13 @@ In the Swift/ folder, you should now see the folder xrt_png/. Open it and check 
 **PC images**
 + Ensure no source is present in the background regions created. 
 + Ensure that all src and bkg regions are inside the xrt image. 
-+ Ensure that the pointings are not defocused.
   
 **WT images**
 + Ensure the source and background region are on the slit. 
            
 1. If the source is at the edge of the detector, you can remove the file Swift/xrtout_*obsid*/*xpc*po_cl.evt 
-2. If the bkg image is outside some of the frames, you may want to define a different bkg region (step 3).  
+2. If the bkg image is outside some of the frames, you may want to define a different bkg region (step 3).
+3. Please refer to the documented problematic cases in Marcotulli \&  \& Torres-Alb&agrave in prep. (SAPLE) to remove the "bad" observations. 
 
 ### Step 5. -- Run xselect to create spectra
 Run: 
@@ -97,7 +97,7 @@ python xselect_run.py > xselect_run.log
 ### Step 6. -- Get the latest XRT RMF file
 Copy the latest XRT RMF files for PC and WT you need into the Swift/ folder as **xrt_pc.rmf** and **xrt_wt.rmf**
 
-Please check [here](https://www.swift.ac.uk/analysis/xrt/rmfarf.php) which ones are the latest.
+You can find the latest  response files [here](https://www.swift.ac.uk/analysis/xrt/rmfarf.php).
      
 ### Step 7. -- Run the powerlaw fit
 Run:
@@ -108,8 +108,8 @@ python xspec_pl_fit.py > xspec_run.log
 This code, for every xrtout_obsid does:
 + creates an arf
 + associates the bkg.pha, arf and rmf to the src.pha file
-+ groups using optimal binning the source spectrum 
-+ fits the spectrum with a tbabs*zpowerlaw the spectrum using Cash statistics (cstat) and Wilms abundaces (abund wilm)
++ groups the source spectrum using optimal binning the source spectrum 
++ fits the spectrum with a tbabs*zpowerlaw using Cash statistics (cstat) and Wilms abundaces (abund wilm)
 + Does the same for WT files 
 + In the Swift/ folder you should have the params_xspec.csv file with the spectral fit results. 
                
