@@ -68,14 +68,14 @@ In the folder **Swift/uvot_png/** (created by the code) you will find the **save
 5. If the source is at the edge of the detector, you can remove the uvot/image folder in the obsid directory
 6. If the bkg image is outside some of the frames, you may want to redifine your bkg region shifts.  
 7. Ensure that the image was not taken when the telescope lost pointing (e.g. the image has streaks like sources)
-8. If there are ANY of the above issues, you can remove the corresponding event file file Swift/*obsid*/uvot/image/sw*obsid*filt*sk.evt 
+8. If there are ANY of the above issues, you can remove the corresponding event file file Swift/*obsid*/uvot/image/sw*obsid*filt*sk.evt. Please refer to the documented cases in Marcotulli \&  \& Torres-Alb&agrave in prep. (SAPLE). 
         
 ### Step 4. -- Run uvotsource on all obsids/filt
 Run:
 ```
 python uvotsource_run.py > uvotsource.log 
 ```
-**Result**: This will run the uvosource on all the observations and filters present in the folder Swift/; check the log file to see when it's done.
+**Result**: This will run the _uvosource_ task on all the observations and filters present in the folder Swift/ which extracts the AB/Vega magnitudes of the source; check the log file to see when it's done to ensure the successful run of the pipeline.
         
 ### Step 5. -- Convert magnitudes to flux
 Run:
