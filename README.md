@@ -39,6 +39,8 @@ Then install the following required python packages :
 - [x]  pandas
 - [x]  warnings
 - [x]  fnmatch
+- [x]  tqdm
+- [x]  re
 
 # How to use SAPLE?
 The main codes for the SAPLE analysis are stored in main_codes/xrt and main_codes/uvot.
