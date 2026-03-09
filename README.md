@@ -53,15 +53,17 @@ If you would like to have SAPLE data products but for some reason you are not ab
 
 
 ## If you use SAPLE, please cite: 
-TBD (SAPLE) <br>
+Marcotulli \& Torres-Alb&agrave in prep. (SAPLE) <br>
 
-## Publications that have already used SAPLE: 
+## Publications that have already used SAPLE:
+Publications that have used SAPLE in its beta version:<br>
 [Penil et al. 2024a](https://ui.adsabs.harvard.edu/abs/2024MNRAS.52710168P/abstract)<br>
 [Penil et al. 2024b](https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.1365P/abstract)<br>
+Publications that have used SAPLE in its full version:<br>
 Giannoli et al. in prep.<br>
 Nelson et al. in prep.<br>
 
 
 ## Main Developers & Testers : Lea Marcotulli & N&uacute;ria Torres-Alb&agrave;
-If any problems arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de) ; [ntorresalba@gmail.com](mailto:ntorresalba@gmail.com) <br><br>
+If any problems arise, please submit an issue on github OR contact us by email: [lea.marcotulli@desy.de](mailto:lea.marcotulli@desy.de) ; [nuria@virginia.edu](mailto:nuria@virginia.edu) <br><br>
 
