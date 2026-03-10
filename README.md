@@ -55,7 +55,7 @@ If you would like to have SAPLE data products but for some reason you are not ab
 
 
 ## If you use SAPLE, please cite: 
-Marcotulli \& Torres-Alb&agrave in prep. (SAPLE) <br>
+Marcotulli \& Torres-Alb&agrave; in prep. (SAPLE) <br>
 
 ## Publications that have already used SAPLE:
 Publications that have used SAPLE in its beta version:<br>
