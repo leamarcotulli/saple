@@ -80,6 +80,6 @@ python uvotsource_run.py > uvotsource.log
 ### Step 5. -- Convert magnitudes to flux
 Run:
 ```
-python uvotsource_extract_flux.py > uvotsource_extract_flux.log 
+python uvotsource_extract_flux_vec.py > uvotsource_extract_flux.log 
 ```
 **Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes. The code gets the info from the uvotsource output AND calculates the extinction corrected flux [erg/cm/s] and errors (not the same as the uvot output). 
