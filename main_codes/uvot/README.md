@@ -36,7 +36,7 @@ caldb
 ```
 
 ### Step 1. -- Create the file with the relevant information about your source
-1. With a text editor, open the code ***make_base_source_info_file.py** and change info about the source (RA,DEC,etc) 
+1. With a text editor, open the code **make_base_source_info_file.py** and change info about the source (RA,DEC,etc) 
 2. Run:
    ```
    python make_base_source_info_file.py
@@ -50,7 +50,7 @@ caldb
 3. Make a background region close to the source and without anything else in it (~15" but can be more/less, user should choose)
 4. Run:
    ```
-   python uvot_src_bkg_region.py > uvot_src_bkg_region.log
+   python uvot_src_bkg_regions.py > uvot_src_bkg_regions.log
    ```
    The code will ask for a user input _hit ENTER_ before starting. <br>
    **Result**: in every Swift/*obsid*/uvot/image/ folder, you should have created 3 files:
