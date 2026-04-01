@@ -50,7 +50,7 @@ caldb
 3. Make a background region close to the source and without anything else in it (~15" but can be more/less, user should choose)
 4. Run:
    ```
-   python uvot_src_bkg_regions.py > uvot_src_bkg_regions.log
+   python uvot_src_bkg_regions.py 
    ```
    The code will ask for a user input _hit ENTER_ before starting. <br>
    **Result**: in every Swift/*obsid*/uvot/image/ folder, you should have created 3 files:
