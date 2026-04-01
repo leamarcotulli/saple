@@ -49,7 +49,7 @@ caldb
    python xrtpipeline_run.py > xrtpipeline_run.log
    ```
    **Result**: This will run the main **xrtpipeline** over **all the obsids**; the analysis results are stored in the Swift/xrtout_*obsid* folders
-2. In the log file, check for all instances of "xrtpipeline_0.13.7: Exit" and make sure no errors are reported. Note: the pipeline version number will depend on your heasoft installation.
+2. **CHECK THE LOG FILE**: search for all instances of "xrtpipeline_0.13.7: Exit" and make sure no errors are reported. [Note: the xrtpipeline version number will depend on your HEASoft installation.]
 
 ### Step 3. -- Create the source/background region files for WT and PC
 **WT events**: 
