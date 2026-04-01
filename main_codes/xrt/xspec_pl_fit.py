@@ -49,7 +49,7 @@ if 'Swift' in os.listdir('.'):
     
     res = open('params_xspec.csv', 'w+')
     
-    res.write('inst,obs_id,exposure_time[s],star_date,star_date[mjd],count/s(0.3-10),pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_l,flux_abs_h,flux_unabs,cstat,dof\n')
+    res.write('inst,obs_id,exposure_time[s],start_date,start_date[mjd],count/s(0.3-10),pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_l,flux_abs_h,flux_unabs,cstat,dof\n')
     
     path_to_rmf = os.getcwd()
 
