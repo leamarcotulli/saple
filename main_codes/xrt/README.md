@@ -66,7 +66,7 @@ caldb
 3. select a bkg region (decide on the size/shape [circle or ellipse]) --> save it as bkg_pc.reg in Swift/
 4. Run:
    ```
-   python xrt_pc_make_image.py > xrt_pc_make_image.log
+   python xrt_pc_make_image.py 
    ```
    **Result**: in every Swift/xrtout_*obsid* folder, you should have created 1 file: *obsid*_src_cent.reg. In the folder Swift/xrt_png/ you will find the saved PC images with the source and background regions.
 
