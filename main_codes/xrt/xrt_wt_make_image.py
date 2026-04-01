@@ -70,7 +70,7 @@ counter = 0 ###when you do multiple sources at once
 src_wt_size_asec = 50 ##arcsec
 
 print("#-----------------------#")
-print("The chosen radius for WT region size is: %.1f\n\n arces"%src_wt_size_asec)
+print("The chosen radius for WT region size is: %.1f arcsec \n\n"%src_wt_size_asec)
 print("If you want to change it, press <Crtl+C> and edit line 70\n\n")
 print("Otherwise, press <ENTER>") 
 input()
@@ -117,7 +117,7 @@ if 'Swift' in os.listdir('.'):
                     for files in os.listdir('.'):
                         
                         if isfile(files) and fnmatch(files, '*xwt*po_cl.evt'):# files.endswith('po_cl.evt'):
-                            print('found '+files[0:20])
+                            print('WT found '+files[0:20])
 
                             with fits.open(files) as hdulist:
                                 primary_header = hdulist[0].header
@@ -176,7 +176,8 @@ for i in range(dir_len):
         os.system(image_wt)  
 
 
-#print(os.getcwd())
+print("Now going into background region")
+
 
 os.chdir(main_path)
 
@@ -236,8 +237,10 @@ if 'Swift' in os.listdir('.'):
                             ddec = np.abs(de_obj-dec_y)*60*60
                             
                             if dra>src_wt_size*2.36 or ddec>src_wt_size*2.36:
+                                print("")
                                 print("!!!WARNING, header file pointing is offset by more than region size %.2f arcsec"%(src_wt_size*2.36))
-                                                        
+                                print("!!!REMOVE observation %s"%files)
+                                print("")                        
                             bkg_wt_x, bkg_wt_y = wt_bkg_region_ctr(src_wt_x, src_wt_y, angle, src_wt_size)
                             
                             string = '# Region file format: DS9 version 4.1\n'\
