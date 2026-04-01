@@ -83,3 +83,4 @@ Run:
 python uvotsource_extract_flux_vec.py > uvotsource_extract_flux.log 
 ```
 **Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes. The code gets the info from the uvotsource output AND calculates the extinction corrected flux [erg/cm/s] and errors (not the same as the uvot output). 
+**CHECK THE LOG FILE**: Make sure to check the _uvotsource_extract_flux.log_ to check for possible warnings or error. If all worked well, the last line should read "Finished -- The UVOT flux has been extracted for all observations.".
