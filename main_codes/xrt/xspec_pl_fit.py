@@ -49,7 +49,7 @@ if 'Swift' in os.listdir('.'):
     
     res = open('params_xspec.csv', 'w+')
     
-    res.write('inst,obs_id,exposure_time[s],date,count/s(0.3-10),pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_l,flux_abs_h,flux_unabs,cstat,dof\n')
+    res.write('inst,obs_id,exposure_time[s],star_date,star_date[mjd],count/s(0.3-10),pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_l,flux_abs_h,flux_unabs,cstat,dof\n')
     
     path_to_rmf = os.getcwd()
 
@@ -80,6 +80,8 @@ if 'Swift' in os.listdir('.'):
                             hd  = getheader(files)
                             exp_time = round(hd["TSTOP"]-hd["TSTART"])
                             date_start = hd["DATE-OBS"][0:10] ##get only day 
+                            tstart_mjd = hd['MJD-BEG']
+                            #tstop_mjd = data_uvot.field('MJD-END')[0]
                             
                             if isfile('src_pc_bkg_arf_rmf.pha'):
                                 os.system('rm src_pc_bkg_arf_rmf.pha')
@@ -116,7 +118,7 @@ if 'Swift' in os.listdir('.'):
                                 s = AllData(1)
                                 rate = s.rate[0]
                                 if rate==0.:
-                                   string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
+                                   string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},0,0,0,0,0,0,0,0,0,0\n"
                                    res.write(string)
                                    continue
                                    
@@ -130,7 +132,7 @@ if 'Swift' in os.listdir('.'):
                                 
                             except:
                             
-                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
+                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -153,7 +155,7 @@ if 'Swift' in os.listdir('.'):
                                 Fit.perform()
                             except:
                                 #string ='0 0 0 0 0 0 0 0 0 0 0 0\n'
-                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
+                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -187,7 +189,7 @@ if 'Swift' in os.listdir('.'):
                             
                             # Using f-string for formatting
                             
-                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
+                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
                              
                             res.write(string)
                             
@@ -203,7 +205,7 @@ if 'Swift' in os.listdir('.'):
                             hd  = getheader(files)
                             exp_time = round(hd["TSTOP"]-hd["TSTART"])
                             date_start = hd["DATE-OBS"][0:10] ##get only day 
-
+                            tstart_mjd = hd['MJD-BEG']
                             
                             if isfile('src_wt_bkg_arf_rmf.pha'):
                                 os.system('rm src_wt_bkg_arf_rmf.pha')
@@ -240,7 +242,7 @@ if 'Swift' in os.listdir('.'):
                                 s = AllData(1)
                                 rate = s.rate[0]
                                 if rate==0.:
-                                   string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
+                                   string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},0,0,0,0,0,0,0,0,0,0\n"
                                    res.write(string)
                                    continue
                                    
@@ -254,7 +256,7 @@ if 'Swift' in os.listdir('.'):
                                 
                             except:
                             
-                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
+                                string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -277,7 +279,7 @@ if 'Swift' in os.listdir('.'):
                             try:
                                 Fit.perform()
                             except:
-                                string =f"{inst_tmp},{obsid},{exp_time},{date_start},0,0,0,0,0,0,0,0,0,0\n"
+                                string =f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},0,0,0,0,0,0,0,0,0,0\n"
                                 res.write(string)
                                 continue
 
@@ -310,7 +312,7 @@ if 'Swift' in os.listdir('.'):
                             
                             # Using f-string for formatting
                             
-                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
+                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
                              
                             res.write(string)
                             

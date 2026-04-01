@@ -46,8 +46,10 @@ def lambda_to_nu(l):
 	return nu
 	
 
-def swift_met_to_mjd(t):
-	y = 51910+(t/(60*60*24)) #days
+def swift_met_to_mjd(mjdref, t, utcf):
+    #https://swift.gsfc.nasa.gov/analysis/suppl_uguide/time_guide.html
+    
+	y = mjdref+((t+utcf)/(60*60*24)) #days
 	return y	
 	
 ########################
@@ -188,9 +190,10 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                     flux_back = data_uvot.field('FLUX_HZ_BKG')[0]
                                     data.close()
                                     
-                                    tstart_mjd = swift_met_to_mjd(tstart_met)
-                                    tstop_mjd = swift_met_to_mjd(tstop_met)
+                                    tstart_mjd = swift_met_to_mjd(51910, tstart_met, 0)
+                                    tstop_mjd  = swift_met_to_mjd(51910, tstop_met, 0)
                                     
+
                                     if mag != 99. and mag_err != 99.:
                                         ext_corr = Al_obs_Roming(ebv_value, filt)
                                         mag_corr_ab = mag_corr_obs(mag, ext_corr)
