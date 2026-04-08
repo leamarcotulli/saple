@@ -33,14 +33,9 @@ conda create --name sample
 ```
 Then install the following required python packages : 
 - [x]  astropy
-- [x]  sys
-- [x]  os
 - [x]  numpy
 - [x]  pandas
-- [x]  warnings
-- [x]  fnmatch
 - [x]  tqdm
-- [x]  re
 
 # How to use SAPLE?
 The main codes for the SAPLE analysis are stored in main_codes/xrt and main_codes/uvot.
