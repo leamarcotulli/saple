@@ -57,7 +57,7 @@ Publications that have used SAPLE in its beta version:<br><br>
 [Penil et al. 2024a](https://ui.adsabs.harvard.edu/abs/2024MNRAS.52710168P/abstract)<br>
 [Penil et al. 2024b](https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.1365P/abstract)<br><br>
 Publications that have used SAPLE in its full version:<br><br>
-[Penil et al. 2026](https://arxiv.org/abs/2604.05905)
+[Penil et al. 2026](https://arxiv.org/abs/2604.05905)<br>
 Giannoli et al. in prep.<br>
 Nelson et al. in prep.<br>
 
