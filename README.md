@@ -53,10 +53,10 @@ If you would like to have SAPLE data products but for some reason you are not ab
 Marcotulli \& Torres-Alb&agrave; in prep. (SAPLE) <br>
 
 ## Publications that have already used SAPLE:
-<u>Publications that have used SAPLE in its beta version</u>:<br>
+<ins>Publications that have used SAPLE in its beta version</ins>:<br>
 [Penil et al. 2024a](https://ui.adsabs.harvard.edu/abs/2024MNRAS.52710168P/abstract)<br>
 [Penil et al. 2024b](https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.1365P/abstract)<br>
-<u>Publications that have used SAPLE in its full version</u>:<br>
+<ins>Publications that have used SAPLE in its full version</ins>:<br>
 [Penil et al. 2026](https://arxiv.org/abs/2604.05905)
 Giannoli et al. in prep.<br>
 Nelson et al. in prep.<br>
