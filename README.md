@@ -7,9 +7,9 @@ Welcome to SAPLE, the Swift Analysis Pipeline for Lightcurve Extraction. The cod
 
 # Disclaimer
 
-This semi-automated pipelines are **not meant to substitute, but to complement** all the fantastic tools the _Swift_ team has set up. We highly encourage any user to go through the documentation [here](https://www.swift.ac.uk/analysis/index.php) to properly understand the steps that our pipeline streamlines.
+This semi-automated pipelines are **not meant to substitute, but to complement** all the tools the _Swift_ team has set up. We highly encourage any user to go through the documentation [here](https://www.swift.ac.uk/analysis/index.php) to properly understand the steps that our pipeline streamlines.
 
-In particular, the [XRT Swift tools](https://www.swift.ac.uk/user_objects/) are optimized for source detection, stacking of spectra and images, and producing XRT flux light-curves. The SAPLE XRT pipeline is optimized to provide lightcurves in both flux and photon index (see next section), the latter not provided by the official tools at the moment. Therefore, we strongly recommend to use the XRT Swift tools unless you want to obtain the lightcurve information SAPLE provides.
+In particular, the [XRT Swift tools](https://www.swift.ac.uk/user_objects/) are optimized for source detection, stacking of spectra and images, and producing XRT count-rate light-curves. The SAPLE XRT pipeline is optimized to provide lightcurves in both energy flux and photon index (see next section), the latter not provided by the official tools at the moment. Therefore, we strongly recommend to use the XRT Swift tools unless you want to obtain the lightcurve information SAPLE provides.
 
 
 
@@ -17,9 +17,9 @@ In particular, the [XRT Swift tools](https://www.swift.ac.uk/user_objects/) are 
 
 1. A **UVOT semi-automated pipeline** that also returns the _absorption corrected_ specific fluxes for your source, a tool which to our knowledge is not available yet to the community;
 
-2. For both XRT and UVOT, the user will produce a **user made source and background regions** and visually check the images for artifacts/issues with the exposure. The XRT online tool to build products runs these checks in the background (and likely much better than any of us can do), but does not allow for user input. With SAPLE, you will be able to make your own choices for source/background regions; the flexibility SAPLE provides also means it should be used with caution, as the official tools are more robust against potential issues with the observations.
+2. For both XRT and UVOT, the user will produce a **user made source and background regions** and visually check the images for artifacts/issues with the exposures. The XRT online tool to build products runs these checks in the background, but does not allow for user input. With SAPLE, you will be able to make your own choices for source/background regions; the flexibility SAPLE provides also means it should be used with caution, as the official tools are more robust against potential issues with the observations.
 
-3. For XRT, you will be able extract a **lightcurve of both flux and photon index** (with associated uncertainties, assuming a redshifted powerlaw spectrum). We caution the users that pileup issues in the observations are currently not corrected for or flagged by the pipeline (again, something that the XRT Swift tool are optimal for; read [this thread](https://www.swift.ac.uk/analysis/xrt/pileup.php) if you are dealing with bright sources). In the future, we plan to introduce different models or fitting strategies, such as using the Bayesian X-ray Analysis software ([BXA](https://johannesbuchner.github.io/BXA/index.html)). 
+3. For XRT, you will be able extract a **lightcurve of both energy flux and photon index** (with associated uncertainties, assuming a redshifted powerlaw spectrum). We caution the users that pileup issues in the observations are currently not corrected for or flagged by the pipeline (again, something that the XRT Swift tool are optimal for; read [this thread](https://www.swift.ac.uk/analysis/xrt/pileup.php) if you are dealing with bright sources). In the future, we plan to introduce different models or fitting strategies, such as using the Bayesian X-ray Analysis software ([BXA](https://johannesbuchner.github.io/BXA/index.html)). 
 
 # Prerequisites to using SAPLE
 
@@ -57,6 +57,7 @@ Publications that have used SAPLE in its beta version:<br>
 [Penil et al. 2024a](https://ui.adsabs.harvard.edu/abs/2024MNRAS.52710168P/abstract)<br>
 [Penil et al. 2024b](https://ui.adsabs.harvard.edu/abs/2024MNRAS.529.1365P/abstract)<br>
 Publications that have used SAPLE in its full version:<br>
+[Penil et al. 2026](https://arxiv.org/abs/2604.05905)
 Giannoli et al. in prep.<br>
 Nelson et al. in prep.<br>
 
