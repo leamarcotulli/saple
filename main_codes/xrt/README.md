@@ -71,10 +71,10 @@ conda activate saple
    ```
    python xrt_pc_make_image.py 
    ```
-   **Result**: in every Swift/xrtout_*obsid* folder, you should have created 1 file: *obsid*_src_cent.reg. In the folder Swift/xrt_png/ you will find the saved PC images with the source and background regions.
+   **Result**: in every Swift/xrtout_*obsid* folder, you should have created 1 file: *obsid*_src_cent.reg. In the folder Swift/xrt_pc_png/ and in Swift/xrt_wt_png/ you will find the saved PC and WT images with the source and background regions.
 
 ### Step 4. -- Check the images
-In the Swift/ folder, you should now see the folder xrt_png/. Open it and check the output images to ensure your bkg and source region are well selected. 
+In the Swift/ folder, you should now see the folder **xrt_pc_png/** and **xrt_wt_png/**. Open it and check the output images to ensure your bkg and source region are well selected. 
 
 **PC images**
 + Ensure no source is present in the background regions created. 
