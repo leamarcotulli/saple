@@ -312,15 +312,13 @@ if 'Swift' in os.listdir('.'):
                             
                             
                             f_unc_l = f-f_l
-                            f_unc_h =
+                            f_unc_h = f_h-f
                             
                             m1(1).values = 0.
                             
                             AllModels.calcFlux("0.3 10.0")
                             f1 = AllData(1)
                             f_unabs, f_ul, f_uh, p, q, r = f1.flux
-                            
-                            
                             
                             # Using f-string for formatting
                             
