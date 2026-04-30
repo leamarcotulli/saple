@@ -114,4 +114,4 @@ This code, for every xrtout_obsid does:
 + groups the source spectrum using optimal binning the source spectrum 
 + fits the spectrum with a tbabs*zpowerlaw using Cash statistics (cstat) and Wilms abundaces (abund wilm)
 + Does the same for WT files 
-+ In the Swift/ folder you should have the params_xspec.csv file with the spectral fit results: exposure, time of the observation, observation number, instrument of the observation, count rate in the 0.3-10\,\rm keV band, powerlaw index and uncertainty at the 90\% confidence level (C.L.), absorbed powerlaw flux and uncertainty at the 90\% C.L. and unabsorbed powerlaw flux.               
++ In the Swift/ folder you should have the **params_xspec.csv** file with the spectral fit results: exposure, time of the observation, observation number, instrument of the observation, count rate in the 0.3-10\,\rm keV band, powerlaw index and uncertainty at the 90\% confidence level (C.L.), absorbed powerlaw flux and uncertainty at the 90\% C.L. and unabsorbed powerlaw flux.               
