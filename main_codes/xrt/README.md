@@ -10,7 +10,7 @@ In the main directory, make a subfolder called Swift/ (this name is **non negoti
 Your folder structure should look like this: 
 
 ```
-3C_273/ [main_dir]
+3C_279/ [main_dir]
 |
 -- make_base_source_info_file.py
 -- xrtpipeline_run.py 
