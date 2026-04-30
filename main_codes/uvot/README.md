@@ -50,7 +50,7 @@ conda activate saple
 3. Make a background region close to the source and without anything else in it (~15" but can be more/less, user should choose)
 4. Run:
    ```
-   python uvot_src_bkg_regions.py 
+   python uvot_make_image.py
    ```
    **Result**: in every Swift/*obsid*/uvot/image/ folder, you should have created 3 files:
    + sw*obsid*filt_src.reg (copy of the original src_uvot.reg; e.g. _sw00035017073um2_src.reg_)
