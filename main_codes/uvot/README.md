@@ -81,5 +81,5 @@ Run:
 ```
 python uvotsource_extract_flux_vec.py > uvotsource_extract_flux.log 
 ```
-**Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes: filter, time of the observation, observation number, AB magnitudes and uncertainties (statistic and systematic) and fluxes from the *uvotsource* routine (not corrected by UV extinction), plus the AB absorption corrected magnitudes and flux densities (and uncertainties) calculated via SAPLE. <br><br>
+**Result**: In the folder Swift/ you should now see the file **uvot_mag_flux_all_epochs_filters.csv** which contains relevant information for your source filters and fluxes: filter, time of the observation, observation number, AB magnitudes and uncertainties (statistic and systematic) and fluxes from the *uvotsource* routine (not corrected by UV extinction), plus the AB absorption corrected magnitudes and flux densities (and uncertainties) calculated via SAPLE. <br><br>
 **CHECK THE LOG FILE**: Make sure to open the _uvotsource_extract_flux.log_ to check for possible warnings or error. If all worked well, the last line should read "Finished -- The UVOT flux has been extracted for all observations.".
