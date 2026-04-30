@@ -12,7 +12,7 @@ import pandas as pd
 
 ##Source Name
 
-source_name = ['3C 273']
+source_name = ['3C 279']
 
 path = os.getcwd()
 
@@ -20,19 +20,19 @@ base_folder_path = [path]
 
 ##RA and DEC in [DEGREES] https://ned.ipac.caltech.edu/
 
-ra_obj  = [187.277915] 
-dec_obj = [2.052388]
+ra_obj  = [194.046527] 
+dec_obj = [-5.789313]
 
 ##Redshift 
-z  = [0.158]
+z  = [0.53]
 
 
 ##NH [cm^-2, Mean from https://www.swift.ac.uk/analysis/nhtot/index.php] or https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3nh/w3nh.pl]
-nh = [1.68e20]
+nh = [2.01e20]
 
 ##Dust Extinction [Mean from  https://www.swift.ac.uk/analysis/nhtot/index.php] or https://irsa.ipac.caltech.edu/applications/DUST/]
 
-E_BV = [0.019]
+E_BV = [0.032]
 
 #####################################
 
