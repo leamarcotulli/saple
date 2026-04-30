@@ -1,7 +1,7 @@
 # A step-by-step guide on how to run the UVOT pipeline
 
 ## Starting directory structure:
-The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273). 
+The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_279). 
 
 In the main directory, copy all the uvot codes (make_base_source_info_file.py, uvot_make_image.py, uvotsource_extract_flux_vec.py, uvotsource_run.py).
 
@@ -10,7 +10,7 @@ In the main directory, make a subfolder called Swift/ (this name is non negotiab
 Your folder structure should look like this: 
 
 ```
-3C_273/ [main_dir]
+3C_279/ [main_dir]
 |
 -- make_base_source_info_file.py
 -- uvot_make_image.py
