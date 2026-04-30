@@ -3,7 +3,7 @@
 ## Starting directory structure:
 The main directory (main_dir) can be given any name you like. However, we highly recommend to give it the name of the source you are analyising (e.g. 3C_273). 
 
-In the main directory, copy all the uvot codes ( make_base_source_info_file.py; uvot_src_bkg_regions.py; uvot_source_extract_flux.py).
+In the main directory, copy all the uvot codes (make_base_source_info_file.py, uvot_make_image.py, uvotsource_extract_flux_vec.py, uvotsource_run.py).
 
 In the main directory, make a subfolder called Swift/ (this name is non negotiable) and download ALL the Swift observations you want to analyse in Swift/. The default name of the observations folders is the obsid number. Again DO NOT change the default name. 
 
@@ -13,15 +13,15 @@ Your folder structure should look like this:
 3C_273/ [main_dir]
 |
 -- make_base_source_info_file.py
--- uvot_src_bkg_regions.py
+-- uvot_make_image.py
 -- uvotsource_run.py
--- uvot_source_extract_flux.py
--- UVOT_pipeline_steps.txt
+-- uvotsource_extract_flux_vec.py
 -- Swift/
    |
    |-- obsid_1/
    |-- obsid_2/
    |-- obsid_../
+   |-- ..
    |-- obsid_N/
 ```
 
@@ -30,9 +30,9 @@ Your folder structure should look like this:
 ### Step 0. Activate conda environment, initialize HEASoft and CALDB path
 E.g. <br>
 ```
-conda activate saple
 heainit
 caldb
+conda activate saple
 ```
 
 ### Step 1. -- Create the file with the relevant information about your source
@@ -52,7 +52,6 @@ caldb
    ```
    python uvot_src_bkg_regions.py 
    ```
-   The code will ask for a user input _hit ENTER_ before starting. <br>
    **Result**: in every Swift/*obsid*/uvot/image/ folder, you should have created 3 files:
    + sw*obsid*filt_src.reg (copy of the original src_uvot.reg; e.g. _sw00035017073um2_src.reg_)
    + sw*obsid*filt_centr_src.reg (centroided version of the src_uvot.reg; e.g. _sw00035017073um2_centr_src.reg_)
@@ -82,5 +81,5 @@ Run:
 ```
 python uvotsource_extract_flux_vec.py > uvotsource_extract_flux.log 
 ```
-**Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes. The code gets the info from the uvotsource output AND calculates the extinction corrected flux [erg/cm/s] and errors (not the same as the uvot output). <br><br>
+**Result**: In the folder Swift/ you should now see the file "uvot_mag_flux_all_epochs_filters.csv" which contains relevant information for your source filters and fluxes: filter, time of the observation, observation number, AB magnitudes and uncertainties (statistic and systematic) and fluxes from the *uvotsource* routine (not corrected by UV extinction), plus the AB absorption corrected magnitudes and flux densities (and uncertainties) calculated via SAPLE. <br><br>
 **CHECK THE LOG FILE**: Make sure to open the _uvotsource_extract_flux.log_ to check for possible warnings or error. If all worked well, the last line should read "Finished -- The UVOT flux has been extracted for all observations.".
