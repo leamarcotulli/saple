@@ -89,30 +89,6 @@ def Al_obs_Roming(E_BV, filt):
     
     return Alambda 
 
-"""
-###THIS NEEDS WORK
-def Al_obs_Cardelli89(E_BV, filt): 
-    ## from Roming_2009: https://iopscience.iop.org/article/10.1088/0004-637X/690/1/163/pdf
-    ####uvw2, uvm2, uvw1, u, b, v
-    filters   = np.array(['uw2', 'um2', 'uw1', 'uuu', 'ubb', 'uvv'])
-    filt_wave = np.array([2030,2231,2634,3501,4329,5402])
-    
-    idx = np.where(filters==filt)[0]
-    
-    f = filt_wave[idx]
-    print(f)
-    
-    wave = np.array(f, dtype='double')
-    
-    A_v = 3.1*E_BV
-    
-    e = extinction.ccm89(wave, A_v, 3.1, unit="aa")
-        
-    Alambda = A_v*e
-    
-    return Alambda, e
-"""
-
 
 def mag_corr_obs(m, Alambda):
 	#AB mags
@@ -270,7 +246,8 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
 
 
     	
-####################
+#########--- MAIN CODE ---###########
+
 try: 
     df = pd.read_csv('base_info.csv')
 except: 
@@ -298,13 +275,10 @@ b = [8.4402, 9.1784, 5.3286, 2.1019, 1.0171, 0.0126]
 #wave lambda (AA)
 wavel = [2030, 2231, 2634, 3501, 4329, 5402]
 
- 
-#f, a, b, wavel = np.loadtxt('filters_a_b_wave.txt', unpack=True, dtype=str, usecols=(0,1,2,3))
-#ref_m, ref_merr, ref_f, ref_ferr = np.loadtxt('filtersparamuvot.txt', unpack=True, usecols=(2, 4, 6, 8))
 
 counter = 0
 
-###HERE RUN THE CODE
+### RUN THE CODE
 
 extract_data_and_save_to_dataframe(main_path, E_BV)
 

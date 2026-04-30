@@ -10,8 +10,8 @@ import os
 from os.path import isfile, join
 
 import pandas as pd
-####################################################################
-from fnmatch import fnmatch
+
+
 
 try: 
     df = pd.read_csv('base_info.csv')
@@ -62,7 +62,7 @@ if 'Swift' in os.listdir('.'):
                     
                         ##PC events
                         if isfile(files) and fnmatch(files, '*xpc*po_cl.evt'):
-                            print('found '+files[0:20])
+                            print('Event file for PC found: '+files[0:20])
                             
                             if isfile("src_pc.pha"):
                                 os.system('rm src_pc.pha')
@@ -92,7 +92,8 @@ if 'Swift' in os.listdir('.'):
                             f.close()
 
                             os.system('xselect @'+files[0:20]+'_pc.xsel')
-
+                        else:
+                            print("PC file not found in "+files[0:20])    
                             
                         ##WT events    
                         if isfile(files) and fnmatch(files, '*xwt*po_cl.evt'):
@@ -127,7 +128,9 @@ if 'Swift' in os.listdir('.'):
                             f.close()
 
                             os.system('xselect @'+files[0:20]+'_wt.xsel')
-
+                        else:
+                            print("WT file not found in "+files[0:20]) 
+                            
                     os.chdir("../")
                 else:
                     print('The folder ', outdir_name, 'does not exist for ', name)	

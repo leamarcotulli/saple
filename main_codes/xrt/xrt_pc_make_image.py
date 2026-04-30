@@ -12,6 +12,32 @@ from tqdm import tqdm
 import re
 
 
+# Function to extract the circle parameters from the DS9 region file content
+def extract_circle_parameters_reg(filename):
+    region_types = ["circle", "ellipse", "box", "polygon", "annulus"]
+    with open(filename, 'r') as file:
+        content = file.readlines()
+
+    for line in content:
+        for reg_string in region_types:
+            if line.startswith(reg_string):
+                # Extract the numbers from the circle line using regex
+                matches = re.search(r'%s\(([^)]+)\)'%reg_string, line)
+      
+    if matches:
+        circle_params = matches.group(1).split(',')
+        # Convert to floats
+        a = float(circle_params[0])
+        b = float(circle_params[1])
+        return a, b
+    else: 
+        print("The source region you defined is NOT included in our scripts.")
+        print("Please contact us if this is the case.")
+        print("")            
+        return None, None
+              
+    return None, None
+
 try: 
     df = pd.read_csv('base_info.csv')
 except: 
@@ -49,12 +75,12 @@ if 'Swift' in os.listdir('.'):
     src_reg = path_reg+'/src_pc.reg'
     bkg_reg = path_reg+'/bkg_pc.reg'
     
-    if os.path.isdir("xrt_png"):
-        print("Print xrt_png/ already exists")
+    if os.path.isdir("xrt_pc_png"):
+        print("The folder xrt_pc_png/ already exists. Moving on.")
     else:
-        os.system('mkdir xrt_png/')
+        os.system('mkdir xrt_pc_png/')
 
-    path_out = path_reg+'/xrt_png/'
+    path_out = path_reg+'/xrt_pc_png/'
 
     for observations in os.listdir('.'):
         if os.path.isdir(observations):
@@ -82,7 +108,7 @@ if 'Swift' in os.listdir('.'):
                     for files in os.listdir('.'):
                         
                         if isfile(files) and fnmatch(files, '*xpc*po_cl.evt'):# files.endswith('po_cl.evt'):
-                            print('found '+files[0:20])
+                            print('Event file for PC found: '+files[0:20])
                             
                             full_path_to_obs = outdir+files
                             full_path_to_ima = path_out+files[0:20]+'.png'
@@ -113,10 +139,12 @@ os.system(display)
 for i in range(dir_len):
     with tqdm(total = len(paths[i]), position = 0, desc = "Saving images") as pbar:
         for j in range(len(paths[i])): 
+            a, b = extract_circle_parameters_reg(paths_to_srcs[i][j])
             image='xpaset -p ds9 fits %s\n\
                    xpaset -p ds9 smooth \n\
                    xpaset -p ds9 scale log \n\
-                   xpaset -p ds9 zoom to fit \n\
+                   xpaset -p ds9 pan to %f %f wcs fk5\n\
+                   xpaset -p ds9 zoom to 1 \n\
                    xpaset -p ds9 region load %s\n\
                    xpaset -p ds9 region select all\n\
                    xpaset -p ds9 region centroid\n\
@@ -127,12 +155,14 @@ for i in range(dir_len):
                    xpaset -p ds9 region load %s\n\
                    xpaset -p ds9 region select all\n\
                    xpaset -p ds9 region centroid\n\
+                   xpaset -p ds9 region select none\n\
                    xpaset -p ds9 saveimage %s\n\
-                   xpaset -p ds9 frame clear\n'%(paths[i][j], paths_to_srcs[i][j], paths_to_obs_srcs[i][j],\
+                   xpaset -p ds9 frame clear\n'%(paths[i][j], a, b, paths_to_srcs[i][j], paths_to_obs_srcs[i][j],\
                                                paths_to_bkg[i][j], paths_to_save[i][j])
             os.system(image)
             pbar.update(1)
 
+#pan to 10:45:00 20:00:00 wcs fk5
 
 #load ../src.reg -saveimage %s_ima.jpeg -exit'
                

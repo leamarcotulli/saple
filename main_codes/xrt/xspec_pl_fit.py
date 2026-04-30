@@ -49,7 +49,7 @@ if 'Swift' in os.listdir('.'):
     
     res = open('params_xspec.csv', 'w+')
     
-    res.write('inst,obs_id,exposure_time[s],start_date,start_date[mjd],count/s(0.3-10),pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_l,flux_abs_h,flux_unabs,cstat,dof\n')
+    res.write('inst,obs_id,exposure_time[s],start_date,start_date[mjd],count/s,pl_idx,pl_idx_l,pl_idx_h,flux_abs,flux_abs_err_l,flux_abs_err_h,flux_unabs,cstat,dof\n')
     
     path_to_rmf = os.getcwd()
 
@@ -180,6 +180,9 @@ if 'Swift' in os.listdir('.'):
                             f1 = AllData(1)
                             f, f_l, f_h, p, q, r = f1.flux
                             
+                            f_unc_l = f-f_l
+                            f_unc_h = f_h-f
+                                                        
                             m1(1).values = 0.
                             
                             AllModels.calcFlux("0.3 10.0")
@@ -189,7 +192,7 @@ if 'Swift' in os.listdir('.'):
                             
                             # Using f-string for formatting
                             
-                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
+                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},{rate0310},{indx},{i_l},{i_h},{f},{f_unc_l},{f_unc_h},{f_unabs},{cstat_val},{dof}\n"
                              
                             res.write(string)
                             
@@ -304,15 +307,24 @@ if 'Swift' in os.listdir('.'):
                             f1 = AllData(1)
                             f, f_l, f_h, p, q, r = f1.flux
                             
+                            f_unc_l = f-f_l
+                            f_unc_h = f_h-f
+                            
+                            
+                            f_unc_l = f-f_l
+                            f_unc_h =
+                            
                             m1(1).values = 0.
                             
                             AllModels.calcFlux("0.3 10.0")
                             f1 = AllData(1)
                             f_unabs, f_ul, f_uh, p, q, r = f1.flux
                             
+                            
+                            
                             # Using f-string for formatting
                             
-                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},{rate0310},{indx},{i_l},{i_h},{f},{f_l},{f_h},{f_unabs},{cstat_val},{dof}\n"
+                            string = f"{inst_tmp},{obsid},{exp_time},{date_start},{tstart_mjd},{rate0310},{indx},{i_l},{i_h},{f},{f_unc_l},{f_unc_h},{f_unabs},{cstat_val},{dof}\n"
                              
                             res.write(string)
                             

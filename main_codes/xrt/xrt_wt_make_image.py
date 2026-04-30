@@ -83,12 +83,12 @@ if 'Swift' in os.listdir('.'):
 
     path_reg = os.getcwd()
     
-    if os.path.isdir("xrt_png"):
-        print("Print xrt_png/ already exists")
+    if os.path.isdir("xrt_wt_png"):
+        print("The folder xrt_wt_png/ already exists")
     else:
-        os.system('mkdir xrt_png/')
+        os.system('mkdir xrt_wt_png/')
 
-    path_out = path_reg+'/xrt_png/'
+    path_out = path_reg+'/xrt_wt_png/'
 
     for observations in os.listdir('.'):
         if os.path.isdir(observations):
@@ -218,7 +218,7 @@ if 'Swift' in os.listdir('.'):
                     for files in os.listdir('.'):
                         
                         if isfile(files) and fnmatch(files, '*xwt*po_cl.evt'):# files.endswith('po_cl.evt'):
-                            print('found '+files[0:20])
+                            print('Event file for WT found: '+files[0:20])
                             
                             ##make background region
                             full_path_to_ima = path_out+files[0:20]+'.png'
@@ -277,6 +277,7 @@ for i in range(dir_len):
                       xpaset -p ds9 region sky fk5\n\
                       xpaset -p ds9 region save %s\n\
                       xpaset -p ds9 region load %s\n\
+                      xpaset -p ds9 region select none\n\
                       xpaset -p ds9 saveimage %s\n\
                       xpaset -p ds9 frame clear'%(paths_wt[i][k], paths_to_wt_bkg[i][k],\
                                                paths_to_wt_bkg_fk5[i][k], paths_to_wt_srcs_phys[i][k],\

@@ -7,7 +7,35 @@ from astropy.coordinates import SkyCoord
 from os.path import isfile, join
 import pandas as pd
 from tqdm import tqdm 
+import re
 
+
+def extract_circle_parameters_reg(filename):
+    region_types = ["circle", "ellipse", "box", "polygon", "annulus"]
+    with open(filename, 'r') as file:
+        content = file.readlines()
+
+    for line in content:
+        for reg_string in region_types:
+            if line.startswith(reg_string):
+                # Extract the numbers from the circle line using regex
+                matches = re.search(r'%s\(([^)]+)\)'%reg_string, line)
+      
+    if matches:
+        circle_params = matches.group(1).split(',')
+        # Convert to floats
+        a = float(circle_params[0])
+        b = float(circle_params[1])
+        return a, b
+    else: 
+        print("The source region you defined is NOT included in our scripts.")
+        print("Please contact us if this is the case.")
+        print("")            
+        return None, None
+              
+    return None, None
+    
+    
 try: 
     df = pd.read_csv('base_info.csv')
 except: 
@@ -25,49 +53,9 @@ main_path = str(df['path'][0])
 ra_obj = df['ra_obj'][0]
 de_obj = df['de_obj'][0]
 
-user_defined = "yes" #"no" 
-
-##in degrees
-#ra_offset = -0.02
-#de_offset = -0.02
-
-##in arcseconds
-#src_reg_size = 5
-#bkg_reg_size = 30
-
-
-"""
-string = f'##################################################################\n'\
-         f'# Did you define your own source and background region for uvot using ds9 (Step 2. of the manual)?\n'\
-         f'# Then change the variable user_defined="yes" line 33.**\n'\
-         f'#----------------#\n'\
-         #f'# If instead you have identified identified a suitable offset from your ds9 image between the source and background region\n'\
-         #f'# Then change the variable user_defined="no" line 33 and read the following...**\n'\
-         #f'#  RECOMMENDED: check at least 1 uvot image to dedice the bkg region offset.**\n'\
-         #f'#\n'\
-         #f'# The UVOT src region size is set by default to ** {src_reg_size} asec **\n'\
-         #f'# The UVOT bkg region size is set by default to ** {bkg_reg_size} asec **\n'\
-         #f'# The UVOT offset between bkg and src region is set by default to\n'\
-         #f'#  RA : ** {ra_offset} deg **; DEC : ** {de_offset} ** deg \n'\
-         #f'#\n'\
-         #f'#If you wish to edit, modify lines 32-35.\n'\
-         #f'#\n'\
-         f'#---- Do you wish to continue?\n (ENTER for yes, Ctrl+C to stop)\n'
-"""
-
-string = f'##################################################################\n'\
-         f'# Did you define your own source and background region for uvot using ds9 (Step 2. of the manual)?\n'\
-         f'# Then change the variable user_defined="yes" line 33.**\n'\
-         f'#----------------#\n'\
-         f'#---- Do you wish to continue?\n (<ENTER> for yes, <Ctrl+C> to stop)\n'
-         
-print(string)
-
-input()
+user_defined = "yes" #"no" %%%%keep as YES
 
 os.chdir(main_path)
-
-
 
 
 paths = [[] for i in range(dir_len)]
@@ -88,11 +76,23 @@ if 'Swift' in os.listdir('.'):
     os.chdir('Swift')
 
     path_reg = os.getcwd()
+    
+    sr = os.path.isfile('%s/src_uvot.reg'%(path_reg))
+    br = os.path.isfile('%s/bkg_uvot.reg'%(path_reg))
+    
+    if sr==False or br==False:
+        print('Cannot find the src_uvot.reg AND/OR bkg_uvot.reg in Swift/.\n'\
+              'FIX:: Create these regions (Step 2. of the README). \n'\
+              )
+        sys.exit(1)   
 
-    os.system('mkdir uvot_png/')
+    if os.path.isdir("uvot_png"):
+        print("The folder uvot_png/ already exists. Moving on.")
+    else:
+        os.system('mkdir uvot_png/')
             
     path_out = path_reg+'/uvot_png/'
-    
+
     for observations in os.listdir('.'):
         if os.path.isdir(observations):
             name=str(observations)
@@ -125,28 +125,7 @@ if 'Swift' in os.listdir('.'):
                                 if user_defined=="yes":
                                     os.system('cp %s/src_uvot.reg %s'%(path_reg, src_reg))
                                     os.system('cp %s/bkg_uvot.reg %s'%(path_reg, bkg_reg))
-                                else:
-                                    
-                                    header=getheader(files)
 
-                                    f = open(files[0:16]+"_src.reg", "w+") #w=write, +=add if the file is not there
-                                    d = open(files[0:16]+"_bkg.reg", "w+")
-                                    string0='# Region file format: DS9 version 4.1 \n'\
-                                    'global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" '\
-                                    'select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1 \n'\
-                                    'fk5 \n'\
-                                    'circle(%.4f,%.4f,%.f")'%(ra_obj,de_obj,src_reg_size)
-        							
-                                    string1='# Region file format: DS9 version 4.1 \n'\
-                                    'global color=green dashlist=8 3 width=1 font="helvetica 10 normal roman" '\
-                                    'select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1 \n'\
-                                    'fk5 \n'\
-                                    'circle(%.4f,%.4f,%.f")'%(ra_obj+ra_offset,de_obj+de_offset,bkg_reg_size)
-        							
-                                    f.write(string0)
-                                    d.write(string1)
-                                    f.close()
-                                    d.close()
 
                                 full_path_to_obs = path_obs+'/'+files
                                 full_path_to_ima = path_out+files[0:20]+'png'
@@ -182,10 +161,12 @@ os.system(display)
 for i in range(dir_len):
     with tqdm(total = len(paths[i]), position = 0, desc = "Saving images") as pbar:
         for j in range(len(paths[i])):
+            a, b = extract_circle_parameters_reg(paths_to_srcs[i][j])
             image='xpaset -p ds9 fits %s\n\
                    xpaset -p ds9 smooth \n\
                    xpaset -p ds9 scale log \n\
-                   xpaset -p ds9 zoom to fit \n\
+                   xpaset -p ds9 pan to %f %f wcs fk5\n\
+                   xpaset -p ds9 zoom to 1 \n\
                    xpaset -p ds9 region load %s\n\
                    xpaset -p ds9 region select all\n\
                    xpaset -p ds9 region centroid\n\
@@ -195,8 +176,9 @@ for i in range(dir_len):
                    xpaset -p ds9 region save %s\n\
                    xpaset -p ds9 region centroid auto no\n\
                    xpaset -p ds9 region load %s\n\
+                   xpaset -p ds9 region select none\n\
                    xpaset -p ds9 saveimage %s\n\
-                   xpaset -p ds9 frame clear'%(paths[i][j], paths_to_srcs[i][j], paths_to_cent_srcs[i][j], paths_to_bkg[i][j], paths_to_save[i][j])
+                   xpaset -p ds9 frame clear'%(paths[i][j], a, b, paths_to_srcs[i][j], paths_to_cent_srcs[i][j], paths_to_bkg[i][j], paths_to_save[i][j])
              
             os.system(image)
             pbar.update(1)

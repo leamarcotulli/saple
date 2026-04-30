@@ -7,7 +7,7 @@ from astropy.coordinates import SkyCoord
 #from astroquery.ned import Ned
 
 import os
-import subprocess 
+#import subprocess 
 from os.path import isfile, join
 import pandas as pd
 
@@ -50,7 +50,7 @@ if 'Swift' in os.listdir('.'):
                     os.chdir('uvot')  
                     #check that there is image/ otherwise exit
                     if 'image' in os.listdir('.'):
-                        print('The folder image/ exists in ', name)
+                        print('The folder image/ exists in ', name,'. Running uvotsource.')
                         os.chdir('image') 
 						
                         for files in os.listdir('.'):
@@ -60,10 +60,10 @@ if 'Swift' in os.listdir('.'):
                                 src = files[0:16]+"_centr_src.reg"
                                 bkg = files[0:16]+"_bkg.reg" 
                                 output = files[0:16]+"_photo.fits"
+
                                 if isfile(output):
                                     os.system('rm '+output)
-                                else: 
-                                    print('Running uvotsource for the first time')
+
                                 string = "uvotsource "+files+"+1 "+src+" "+bkg+" 3 "+output
                                 os.system(string)
                         os.chdir('../../../')
