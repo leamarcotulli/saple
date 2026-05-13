@@ -50,7 +50,7 @@ If you would like to have SAPLE data products but for some reason you are not ab
 
 
 ## If you use SAPLE, please cite: 
-Marcotulli \& Torres-Alb&agrave; in prep. (SAPLE) <br>
+SAPLE: Swift Analysis Pipeline for Ligthcurve Extracttion [Marcotulli \& Torres-Alb&agrave 2026](https://arxiv.org/abs/2605.10423)<br>
 
 ## Publications that have already used SAPLE:
 Publications that have used SAPLE in its beta version:<br><br>
