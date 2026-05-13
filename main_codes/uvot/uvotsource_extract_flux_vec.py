@@ -166,6 +166,11 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                     flux_back = data_uvot.field('FLUX_HZ_BKG')[0]
                                     data.close()
                                     
+                                    flux *=1e-26
+                                    flux_err_stat *=1e-26
+                                    flux_err_syst *=1e-26
+                                    flux_back *=1e-26
+                                    
                                     tstart_mjd = swift_met_to_mjd(51910, tstart_met, 0)
                                     tstop_mjd  = swift_met_to_mjd(51910, tstop_met, 0)
                                     
@@ -194,7 +199,6 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                         mag_corr_ab = mag_corr_obs(mag_upper_limit, ext_corr)
                                         flux_s_hz, flux_s_wave  = spec_flux_abmag(mag_corr_ab, wave_tmp)
                                         
-                                        flux_s_hz, flux_s_wave = np.array([0.]), np.array([0.])
                                         flux_err_hz_u, flux_err_wave_u, flux_err_hz_d, flux_err_wave_d  = np.array([0.]), np.array([0.]), np.array([0.]), np.array([0.])
                                         upper_limit = np.array(int(1))   
                                                                      
@@ -211,11 +215,11 @@ def extract_data_and_save_to_dataframe(directory_path, ebv_value):
                                         'ab_mag_err': mag_err,
                                         'ab_mag_err_stat': mag_err_stat, 
                                         'ab_mag_err_syst': mag_err_syst, 
-                                        'ab_mag_ext_corr': mag_corr_ab[0],
+                                        'ab_mag_ext_corr_saple': mag_corr_ab[0],
                                         'sflux_hz_uvot[erg/cm2/s/Hz]': flux, 
                                         'sflux_hz_err_stat_uvot[erg/cm2/s/Hz]': flux_err_stat, 
                                         'sflux_hz_err_syst_uvot[erg/cm2/s/Hz]': flux_err_syst, 
-                                        'sflux_hz_bkg_uvot[erg/cm2/s/Hz]': flux_back,
+                                        'sflux_hz_bkg_uvot[erg/cm2/s/Hz/arcsec2]': flux_back,
                                         'sflux_hz_saple[erg/cm2/s/Hz]': flux_s_hz[0], 
                                         'sflux_hz_err_d_saple[erg/cm2/s/Hz]': flux_err_hz_d[0],
                                         'sflux_hz_err_u_saple[erg/cm2/s/Hz]': flux_err_hz_u[0],                                         

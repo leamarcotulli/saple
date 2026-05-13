@@ -234,7 +234,7 @@ if 'Swift' in os.listdir('.'):
                             
                             f1 = open(files[0:20]+"_wt_ftgrppha.sh", "w+") #w=write, +=add if the file is not there
                                                         
-                            string1 = 'ftgrouppha infile=src_wt_bkg_arf_rmf.pha respfile=../xrt_pc.rmf outfile=src_wt_opt.pha grouptype=opt clobber=yes'
+                            string1 = 'ftgrouppha infile=src_wt_bkg_arf_rmf.pha respfile=../xrt_wt.rmf outfile=src_wt_opt.pha grouptype=opt clobber=yes'
                             f1.write(string1)
                             f1.close()
                             os.system('bash '+files[0:20]+'_wt_ftgrppha.sh')
