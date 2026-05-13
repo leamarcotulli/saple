@@ -85,7 +85,7 @@ In the Swift/ folder, you should now see the folder **xrt_pc_png/** and **xrt_wt
            
 1. If the source is at the edge of the detector, you can remove the file Swift/xrtout_*obsid*/*xpc*po_cl.evt 
 2. If the bkg image is outside some of the frames, you may want to define a different bkg region (step 3).
-3. Please refer to the documented problematic cases in Marcotulli \&  \& Torres-Alb&agrave; in prep. (SAPLE) to remove the "bad" observations. 
+3. Please refer to the documented problematic cases in [Marcotulli \& Torres-Alb&agrave; 2026](https://arxiv.org/abs/2605.10423) (SAPLE) to remove the "bad" observations. 
 
 ### Step 5. -- Run xselect to create source and background spectra
 Run: 
